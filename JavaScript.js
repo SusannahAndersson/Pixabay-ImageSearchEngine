@@ -105,7 +105,3 @@ function removeCurrentSearchItems() {
         child.remove();
     }
 }
-
-
-
-

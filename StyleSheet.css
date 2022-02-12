@@ -1,7 +1,13 @@
 ﻿* {
     box-sizing: border-box;
     margin: 0;
+    font-family: 'Brush Script MT', cursive;
     font-family: 'Oleo Script', cursive;
+    font-size: medium;
+}
+
+h1 {
+    font-size: xx-large;
 }
 
 .SearchBar {
@@ -23,6 +29,8 @@ body {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
+    margin: 10px;
+    padding:0;
 }
 
     #hit-list li {
@@ -52,5 +60,5 @@ body {
         }
 
 footer {
-   margin: 20px;
+    margin: 20px;
 }
