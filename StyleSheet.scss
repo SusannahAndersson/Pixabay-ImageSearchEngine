@@ -1,0 +1,194 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .PixabayLogo {
+        max-width: 10%;
+        height: auto;
+    }
+}
+
+header {
+
+
+}
+
+/*
+@media (max-width: 500px) {
+    main {
+        color: darkslategrey;
+        display: flex;
+        flex-direction: column;
+    }
+
+    img {
+        max-width: 35%;
+        display: flex;
+    }
+
+    table {
+        color: darkslategrey;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+
+@media (min-width: 1000px) {
+    main {
+        color: darkslategrey;
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+    }
+
+    bcontainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    intro {
+        float: right;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    img {
+        float: left;
+        width: 240px;
+        height: auto;
+    }
+
+    .table:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .movies {
+        float: left;
+        width: 50%;
+    }
+
+    .awards {
+        float: left;
+        width: 50%;
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
+}
+
+    */
+
+
+
+/*
+
+
+
+
+
+
+    body {
+    background-color: hsl(40, 100%, 85%);
+    font-family: Georgia;
+    color: darkslategrey;
+    border: solid;
+    border-color: burlywood;
+    outline: solid;
+    outline-width: 100px;
+    outline-color: hsl(40, 50%, 60%);
+    margin: 5%;
+    padding: 8px;
+}
+
+footer {
+    color: black;
+    text-align: center;
+}
+
+header {
+    color: black;
+    text-align: center;
+}
+
+@media (min-width: 1000px) {
+    main {
+        color: darkslategrey;
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+    }
+
+    bcontainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    intro {
+        float: right;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    img {
+        float: left;
+        width: 240px;
+        height: auto;
+    }
+
+    .table:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .movies {
+        float: left;
+        width: 50%;
+    }
+
+    .awards {
+        float: left;
+        width: 50%;
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    main {
+        color: darkslategrey;
+        display: flex;
+        flex-direction: column;
+    }
+
+    img {
+        max-width: 35%;
+        display: flex;
+    }
+
+    table {
+        color: darkslategrey;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+*/

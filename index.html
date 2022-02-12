@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<!--Object:cover-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Pixabay - image search engine with color option searches">
+    <meta name="keywords" content="Pixabay - image search engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixabay-image search engine</title>
+    <link rel="stylesheet" href="StyleSheet.scss" />
+    <script src="JavaScript.js" defer></script>
+</head>
+<body>
+    <header>
+
+        <img id="logo" class="img-responsive hidden-lg hidden-md hidden-sm visible-xs" src="Images/small-header.png" />
+        <img src="pixabay.png" alt="Pixabay logo" class="PixabayLogo">
+    </header>
+    <main>
+        <form class="InputSearch">
+            <input type="text" id="Search" placeholder="search images">
+            <select id="color">
+                <!--Accepted values: "grayscale", "transparent", "red",
+                                "orange",
+                "yellow", "green", "turquoise", "blue", "lilac", "pink",
+                "white", "gray", "black", "brown"-->
+                <option value="">any color</option>
+                <option value="grayscale">grayscale</option>
+                <option value="transparent">transparent</option>
+                <option value="red">red</option>
+                <option value="orange">orange</option>
+                <option value="yellow">yellow</option>
+                <option value="green">green</option>
+                <option value="turquoise">turquoise</option>
+                <option value="blue">blue</option>
+                <option value="lilac">lilac</option>
+                <option value="pink">pink</option>
+                <option value="white">white</option>
+                <option value="gray">gray</option>
+                <option value="black">black</option>
+                <option value="brown">brown</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+    <footer>
+        <button type="button" id="previous">Previous Page</button>
+
+        <button type="button" id="next">Next Page</button>
+
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Pixabay-ImageSearchEngine": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
