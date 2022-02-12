@@ -2,8 +2,17 @@
 let lastSearchString = "";
 let lastSearchColor = "";
 let totalHits = 0;
+let template;
+start();
 
-setPaginationButtonStatus();
+function start() {
+    setPaginationButtonStatus();
+    setupTemplate();
+    setupForm();
+    setupNextPageButton();
+    setupPreviousPageButton();
+}
+
 function setPaginationButtonStatus() {
     let prevButton = document.querySelector('#previous');
     let nextButton = document.querySelector('#next');
@@ -24,15 +33,12 @@ function setPaginationButtonStatus() {
     }
 }
 
-let template;
-setUpTemplate();
-function setUpTemplate() {
+function setupTemplate() {
     template = document.querySelector('#hit-template');
     template.remove();
 }
 
-formHandler();
-function formHandler() {
+function setupForm() {
     let searchForm = document.querySelector('.InputSearch');
     let searchString = document.querySelector('#Search');
     let color = document.querySelector('#color');
@@ -45,16 +51,14 @@ function formHandler() {
     }
 }
 
-nextPageButtonHandler();
-function nextPageButtonHandler() {
+function setupNextPageButton() {
     let button = document.querySelector('#next');
     button.onclick = () => {
         changePage(++currentPage);
     }
 }
 
-previousPageButtonHandler();
-function previousPageButtonHandler() {
+function setupPreviousPageButton() {
     let button = document.querySelector('#previous');
     button.onclick = () => {
         changePage(--currentPage);
