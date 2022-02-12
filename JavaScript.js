@@ -1,75 +1,110 @@
-﻿
-start();
+﻿let currentPage = 1;
+let lastSearchString = "";
+let lastSearchColor = "";
+let totalHits = 0;
 
-async function start() {
-    let forecast = await getWeatherData();
-
-    let response = await fetch('screenings.json');
-    let screenings = await response.json();
-
-    // Find the DOM elements we need.
-    let screeningList = document.querySelector('#screening-list');
-    let ticketList = document.querySelector('#ticket-list');
-    let screeningTemplate = document.querySelector('#screening-template');
-    screeningTemplate.remove();
-    let ticketTemplate = document.querySelector('#ticket-template');
-    ticketTemplate.remove();
-
-    for (let screening of screenings) {
-        showScreening(screening);
+setPaginationButtonStatus();
+function setPaginationButtonStatus(){
+    let prevButton = document.querySelector('#previous');
+    let nextButton = document.querySelector('#next');
+    prevButton.disabled = false;
+    nextButton.disabled = false;
+    // if totalhits = 0 => both disabled
+    if (totalHits === 0) {
+        prevButton.disabled = true;
+        nextButton.disabled = true;
     }
-
-    function showScreening(screening) {
-        let screeningLi = screeningTemplate.content.firstElementChild.cloneNode(true);
-        screeningLi.querySelector('.movie-title').textContent = screening.title;
-        screeningLi.querySelector('.movie-image').src = screening.image;
-        screeningLi.querySelector('.screening-time').textContent = formatTime(screening.time);
-
-        // Get the weather forecast in the "hourly" array based on the number of (integer) hours until the screening.
-        let hoursUntilScreening = Math.round(screening.time - new Date().getHours());
-        let weatherDescription = forecast.hourly[hoursUntilScreening].weather[0].main;
-        screeningLi.querySelector('.weather-forecast').textContent = weatherDescription;
-
-        screeningList.append(screeningLi);
-
-        screeningLi.querySelector('.buy-ticket-button').onclick = () => {
-            showTicket(screening);
-        };
+    // if currentPage * 10 <= totalHits => nextButton disabled
+    if(totalHits <= currentPage * 10){
+        nextButton.disabled = true;
     }
-
-    function showTicket(screening) {
-        let ticketLi = ticketTemplate.content.firstElementChild.cloneNode(true);
-        ticketLi.querySelector('.movie-title').textContent = screening.title;
-        ticketLi.querySelector('.movie-image').src = screening.image;
-        ticketLi.querySelector('.screening-time').textContent = formatTime(screening.time);
-        ticketList.append(ticketLi);
-
-        ticketLi.querySelector('.remove-ticket-button').onclick = () => {
-            ticketLi.remove();
-        };
+    // if currentPage <= 1 => prevButton disabled
+    if (currentPage <= 1){
+        prevButton.disabled = true;
     }
 }
 
-async function getPixabayData() {
-    const openWeatherApiKey = '25667613-c4eb752a402c99aa3f1f4a7f5';
+let template;
+setUpTemplate();
+function setUpTemplate() {
+    template = document.querySelector('#hit-template');
+    template.remove();
+}
+
+formHandler();
+function formHandler(){
+    let searchForm = document.querySelector('.InputSearch');
+    let searchString = document.querySelector('#Search');
+    let color = document.querySelector('#color');
+    
+    searchForm.onsubmit = event => {
+        lastSearchColor = color.value; // cache
+        lastSearchString = searchString.value; // cache
+        event.preventDefault();
+        searchPixaby(searchString.value, color.value, 1);
+    }
+}
+
+nextPageButtonHandler();
+function nextPageButtonHandler() {
+    let button = document.querySelector('#next');
+    button.onclick = () => {
+        changePage(++currentPage);
+    }
+}
+
+previousPageButtonHandler();
+function previousPageButtonHandler() {
+    let button = document.querySelector('#previous');
+    button.onclick = () => {
+        changePage(--currentPage);
+    }
+}
+
+function changePage(newPageNumber){
+    removeCurrentSearchItems();
+    searchPixaby(lastSearchString, lastSearchColor, newPageNumber);
+}
+
+async function searchPixaby(searchQuery, searchColor, pageNumber) {
+    let pixabay = await getPixabayData(searchQuery, searchColor, pageNumber);
+    currentPage = pageNumber; // cache
+    removeCurrentSearchItems();
+    totalHits = pixabay.totalHits; // cache
+    
+    let hitList = document.querySelector('#hit-list');
+    
+    for (const image of pixabay.hits) {
+        let li = template.content.firstElementChild.cloneNode(true);
+        li.querySelector('img').src = image.previewURL;
+        li.querySelector('#tags').textContent = image.tags;
+        li.querySelector('#photographer').textContent = image.user;
+        hitList.append(li);
+    }
+    setPaginationButtonStatus();
+}
+
+async function getPixabayData(searchQuery, searchColor, pageNumber) {
     let params = new URLSearchParams({
+        key : '25655500-534d4ee5283250b244508c508',
+        q : searchQuery,
+        colors : searchColor,
+        page : pageNumber,
+        per_page : '10'
     });
-    let response = await fetch('https://pixabay.com/api/?' + params.toString());
-    let pixabay = await response.json();
-    return pixabay;
+    
+    let response = await fetch("https://pixabay.com/api/?" + params.toString());
+    let json = await response.json();
+    return json;
 }
 
-function formatTime(time) {
-    let hours = Math.floor(time);
-    let hourString = hours.toString().padStart(2, '0');
-
-    let minuteRatio = time - hours;
-    let minutes = Math.round(60 * minuteRatio);
-    let minuteString = minutes.toString().padStart(2, '0');
-
-    return hourString + ':' + minuteString;
+function removeCurrentSearchItems() {
+    let hitList = document.querySelector('#hit-list');
+    let children = hitList.querySelectorAll('li');
+    for (const child of children) {
+        child.remove();
+    }
 }
-
 
 
 

@@ -12,8 +12,6 @@
 </head>
 <body>
     <header>
-
-        <img id="logo" class="img-responsive hidden-lg hidden-md hidden-sm visible-xs" src="Images/small-header.png" />
         <img src="pixabay.png" alt="Pixabay logo" class="PixabayLogo">
     </header>
     <main>
@@ -42,13 +40,19 @@
             </select>
             <button type="submit">Submit</button>
         </form>
+        <ul id="hit-list">
+            <template id="hit-template">
+                <li>
+                    <img src="pixabay.png" height="100px" width="auto">
+                    <p id="tags">red, rose, bush</p>
+                    <p>Taken by: <span id="photographer"></span></p>
+                </li>
+            </template>
+        </ul>
     </main>
     <footer>
         <button type="button" id="previous">Previous Page</button>
-
         <button type="button" id="next">Next Page</button>
-
-
     </footer>
 </body>
 </html>
