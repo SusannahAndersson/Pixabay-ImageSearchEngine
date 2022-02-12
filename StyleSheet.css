@@ -8,6 +8,7 @@
 
 h1 {
     font-size: xx-large;
+    text-shadow: 2px 2px grey;
 }
 
 .SearchBar {
@@ -28,16 +29,16 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     margin: 10px;
-    padding:0;
+    padding: 0;
 }
 
     #hit-list li {
         list-style-type: none;
         margin: 10px;
         text-align: center;
-        flex-basis: 33%;
+        max-width: 230px;
         flex-grow: 1;
     }
 

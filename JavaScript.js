@@ -76,7 +76,7 @@ async function searchPixaby(searchQuery, searchColor, pageNumber) {
 
     for (const image of pixabay.hits) {
         let li = template.content.firstElementChild.cloneNode(true);
-        li.querySelector('img').src = image.previewURL;
+        li.querySelector('img').src = image.largeImageURL;
         li.querySelector('#tags').textContent = image.tags;
         li.querySelector('#photographer').textContent = image.user;
         hitList.append(li);
