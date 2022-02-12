@@ -3,6 +3,27 @@ let lastSearchString = "";
 let lastSearchColor = "";
 let totalHits = 0;
 
+setPaginationButtonStatus();
+function setPaginationButtonStatus(){
+    let prevButton = document.querySelector('#previous');
+    let nextButton = document.querySelector('#next');
+    prevButton.disabled = false;
+    nextButton.disabled = false;
+    // if totalhits = 0 => both disabled
+    if (totalHits === 0) {
+        prevButton.disabled = true;
+        nextButton.disabled = true;
+    }
+    // if currentPage <= 1 => prevButton disabled
+    else if (currentPage <= 1){
+        prevButton.disabled = true;
+    }
+    // if currentPage * 10 <= totalHits => nextButton disabled
+    else if(totalHits <= currentPage * 10){
+        nextButton.disabled = true;
+    }
+}
+
 let template;
 setUpTemplate();
 function setUpTemplate() {
@@ -11,7 +32,6 @@ function setUpTemplate() {
 }
 
 formHandler();
-
 function formHandler(){
     let searchForm = document.querySelector('.InputSearch');
     let searchString = document.querySelector('#Search');
@@ -54,7 +74,7 @@ async function searchPixaby(searchQuery, searchColor, pageNumber) {
     let pixabay = await getPixabayData(searchQuery, searchColor, pageNumber);
     removeCurrentSearchItems();
     totalHits = pixabay.totalHits; // cache
-
+    
     let hitList = document.querySelector('#hit-list');
     
     for (const image of pixabay.hits) {
@@ -64,6 +84,7 @@ async function searchPixaby(searchQuery, searchColor, pageNumber) {
         li.querySelector('#photographer').textContent = image.user;
         hitList.append(li);
     }
+    setPaginationButtonStatus();
 }
 
 async function getPixabayData(searchQuery, searchColor, pageNumber) {
