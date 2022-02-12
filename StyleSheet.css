@@ -1,12 +1,11 @@
-﻿@font-face {
-    font-family: 'ImportOleo';
-    src: url(https://fonts.google.com/specimen/Oleo+Script);
-}
-
-* {
+﻿* {
     box-sizing: border-box;
     margin: 0;
-    font-family: ImportOleo;
+    font-family: 'Oleo Script', cursive;
+}
+
+.SearchBar {
+    margin-top: 20px;
 }
 
 body {
@@ -14,6 +13,9 @@ body {
     background-color: black;
     background-repeat: no-repeat;
     color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #hit-list {
@@ -45,231 +47,10 @@ body {
             font-size: large;
         }
 
-
-
-#hit-list li #tags {
-    font-size: x-large;
-}
-
-
-
-/*
-
-@media (max-width: 500px) {
-    main {
-        color: darkslategrey;
-        display: flex;
-        max-width: 10%;
-        height: auto;
-    }
-
-
-    @media (max-width: 1000px) {
-         {
-            max-width: 10%;
-            height: auto;
+        #hit-list li #tags {
+            font-size: x-large;
         }
-    }
-
-
-
-
-
-    
-
-
-
-
-
-    typsnittet [Oleo Script](https: //fonts.google.com/specimen/Oleo+Script).
-
-
-    @import url(https://fonts.google.com/specimen/Oleo+Script);
-
-    font-family:PixabayIcons;src:url
-    (/static/fonts/pixabayicons.woff2?0c93a9e6ebc7f9a9dd87b2c219769637) format("woff2");
-
-
-
-
-    img {
-        width: 240px;
-        height: auto;
-    }
-
-
-    header {
-    }
-
-
-    @media (max-width: 500px) {
-        main {
-            color: darkslategrey;
-            display: flex;
-            flex-direction: column;
-        }
-
-        img {
-            max-width: 35%;
-            display: flex;
-        }
-
-        table {
-            color: darkslategrey;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-    }
-
-
-
-    @media (min-width: 1000px) {
-        main {
-            color: darkslategrey;
-            display: flex;
-            flex-direction: row;
-            margin: 20px;
-        }
-
-        bcontainer {
-            display: flex;
-            flex-direction: column;
-        }
-
-        intro {
-            float: right;
-            display: flex;
-            flex-direction: column;
-            margin-top: 10px;
-        }
-
-        img {
-            float: left;
-            width: 240px;
-            height: auto;
-        }
-
-        .table:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        .movies {
-            float: left;
-            width: 50%;
-        }
-
-        .awards {
-            float: left;
-            width: 50%;
-        }
-
-        footer {
-            display: flex;
-            justify-content: center;
-            margin: 10px;
-        }
-    }
-
- 
-
-
-
-
-
-
-    body {
-    background-color: hsl(40, 100%, 85%);
-    font-family: Georgia;
-    color: darkslategrey;
-    border: solid;
-    border-color: burlywood;
-    outline: solid;
-    outline-width: 100px;
-    outline-color: hsl(40, 50%, 60%);
-    margin: 5%;
-    padding: 8px;
-}
 
 footer {
-    color: black;
-    text-align: center;
+   margin: 20px;
 }
-
-header {
-    color: black;
-    text-align: center;
-}
-
-@media (min-width: 1000px) {
-    main {
-        color: darkslategrey;
-        display: flex;
-        flex-direction: row;
-        margin: 20px;
-    }
-
-    bcontainer {
-        display: flex;
-        flex-direction: column;
-    }
-
-    intro {
-        float: right;
-        display: flex;
-        flex-direction: column;
-        margin-top: 10px;
-    }
-
-    img {
-        float: left;
-        width: 240px;
-        height: auto;
-    }
-
-    .table:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-
-    .movies {
-        float: left;
-        width: 50%;
-    }
-
-    .awards {
-        float: left;
-        width: 50%;
-    }
-
-    footer {
-        display: flex;
-        justify-content: center;
-        margin: 10px;
-    }
-}
-
-@media (max-width: 500px) {
-    main {
-        color: darkslategrey;
-        display: flex;
-        flex-direction: column;
-    }
-
-    img {
-        max-width: 35%;
-        display: flex;
-    }
-
-    table {
-        color: darkslategrey;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-*/
