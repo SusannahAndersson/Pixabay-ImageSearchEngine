@@ -14,13 +14,13 @@ function setPaginationButtonStatus(){
         prevButton.disabled = true;
         nextButton.disabled = true;
     }
-    // if currentPage <= 1 => prevButton disabled
-    else if (currentPage <= 1){
-        prevButton.disabled = true;
-    }
     // if currentPage * 10 <= totalHits => nextButton disabled
-    else if(totalHits <= currentPage * 10){
+    if(totalHits <= currentPage * 10){
         nextButton.disabled = true;
+    }
+    // if currentPage <= 1 => prevButton disabled
+    if (currentPage <= 1){
+        prevButton.disabled = true;
     }
 }
 
@@ -62,16 +62,13 @@ function previousPageButtonHandler() {
 }
 
 function changePage(newPageNumber){
-    currentPage = newPageNumber; // cache
     removeCurrentSearchItems();
     searchPixaby(lastSearchString, lastSearchColor, newPageNumber);
 }
 
-// Keep track of total amount
-// TODO stop functionality for next and previous button when no more hits
-
 async function searchPixaby(searchQuery, searchColor, pageNumber) {
     let pixabay = await getPixabayData(searchQuery, searchColor, pageNumber);
+    currentPage = pageNumber; // cache
     removeCurrentSearchItems();
     totalHits = pixabay.totalHits; // cache
     
