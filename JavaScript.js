@@ -17,7 +17,7 @@ start();
 
 // TODO rename and move to search
 async function start() {
-    let pixabay = await getPixabayData();
+    let pixabay = await getPixabayData('rose', 'blue');
 
     // let totalHitsSpan = document.querySelector('#total-hits');
     // totalHitsSpan.textContent = pixabay.totalHits;
@@ -36,10 +36,11 @@ async function start() {
 }
 
 // TODO set in parameters for function
-async function getPixabayData() {
+async function getPixabayData(searchQuery, searchColor) {
     let params = new URLSearchParams({
         key : '25655500-534d4ee5283250b244508c508',
-        q : 'red roses',
+        q : searchQuery,
+        colors : searchColor,
         per_page : '10'
     });
     
