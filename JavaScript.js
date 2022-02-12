@@ -1,6 +1,21 @@
 ﻿
+formHandler();
+
+function formHandler(){
+    let searchForm = document.querySelector('.InputSearch');
+    let searchString = document.querySelector('#Search');
+    let color = document.querySelector('#color');
+    // let movies = document.querySelector('.movies');
+
+    searchForm.onsubmit = event => {
+        event.preventDefault();
+        alert("Search: " + searchString.value + " Color: " + color.value);
+    }
+}
+
 start();
 
+// TODO rename and move to search
 async function start() {
     let pixabay = await getPixabayData();
 
